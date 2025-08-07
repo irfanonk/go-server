@@ -1,4 +1,4 @@
-module github.com/Massad/gin-boilerplate
+module github.com/irfanonk/go-server
 
 go 1.24.0
 

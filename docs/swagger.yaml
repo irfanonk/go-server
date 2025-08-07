@@ -18,8 +18,8 @@ definitions:
         minLength: 3
         type: string
     required:
-    - content
-    - title
+      - content
+      - title
     type: object
   forms.LoginForm:
     properties:
@@ -30,8 +30,8 @@ definitions:
         minLength: 3
         type: string
     required:
-    - email
-    - password
+      - email
+      - password
     type: object
   forms.RegisterForm:
     properties:
@@ -47,22 +47,22 @@ definitions:
         minLength: 3
         type: string
     required:
-    - email
-    - name
-    - password
+      - email
+      - name
+      - password
     type: object
   forms.Token:
     properties:
       refresh_token:
         type: string
     required:
-    - refresh_token
+      - refresh_token
     type: object
   models.AllArticleResponse:
     properties:
       results:
         items:
-          $ref: '#/definitions/models.Result'
+          $ref: "#/definitions/models.Result"
         type: array
     type: object
   models.ArticleResponse:
@@ -78,7 +78,7 @@ definitions:
       updated_at:
         type: integer
       user:
-        $ref: '#/definitions/models.UserResponse'
+        $ref: "#/definitions/models.UserResponse"
     type: object
   models.AuthResponse:
     properties:
@@ -100,16 +100,16 @@ definitions:
   models.OneArticleResponse:
     properties:
       data:
-        $ref: '#/definitions/models.ArticleResponse'
+        $ref: "#/definitions/models.ArticleResponse"
     type: object
   models.Result:
     properties:
       data:
         items:
-          $ref: '#/definitions/models.ArticleResponse'
+          $ref: "#/definitions/models.ArticleResponse"
         type: array
       meta:
-        $ref: '#/definitions/models.Meta'
+        $ref: "#/definitions/models.Meta"
     type: object
   models.User:
     properties:
@@ -127,7 +127,7 @@ definitions:
       token:
         type: string
       user:
-        $ref: '#/definitions/models.User'
+        $ref: "#/definitions/models.User"
     type: object
   models.UserResponse:
     properties:
@@ -147,11 +147,12 @@ info:
     email: support@swagger.io
     name: API Support
     url: http://www.swagger.io/support
-  description: A RESTful API boilerplate with Gin Framework, PostgreSQL, Redis and
+  description:
+    A RESTful API boilerplate with Gin Framework, PostgreSQL, Redis and
     JWT authentication
   license:
     name: MIT License
-    url: https://github.com/Massad/gin-boilerplate/blob/master/LICENSE
+    url: https://github.com/irfanonk/go-server/blob/master/LICENSE
   termsOfService: http://swagger.io/terms/
   title: Golang Gin Boilerplate
   version: "1.0"
@@ -159,211 +160,211 @@ paths:
   /article:
     post:
       consumes:
-      - application/json
+        - application/json
       description: Create Article example
       parameters:
-      - description: Article
-        in: body
-        name: article
-        required: true
-        schema:
-          $ref: '#/definitions/forms.CreateArticleForm'
+        - description: Article
+          in: body
+          name: article
+          required: true
+          schema:
+            $ref: "#/definitions/forms.CreateArticleForm"
       produces:
-      - application/json
+        - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/forms.ArticleResponse'
+            $ref: "#/definitions/forms.ArticleResponse"
         "406":
           description: Not Acceptable
           schema:
-            $ref: '#/definitions/forms.ArticleResponse'
+            $ref: "#/definitions/forms.ArticleResponse"
       summary: Create Article example
       tags:
-      - Article
+        - Article
   /article/{id}:
     delete:
       consumes:
-      - application/json
+        - application/json
       description: Delete Article example
       produces:
-      - application/json
+        - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.OneArticleResponse'
+            $ref: "#/definitions/models.OneArticleResponse"
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/forms.ArticleResponse'
+            $ref: "#/definitions/forms.ArticleResponse"
         "406":
           description: Not Acceptable
           schema:
-            $ref: '#/definitions/forms.ArticleResponse'
+            $ref: "#/definitions/forms.ArticleResponse"
       summary: Delete Article example
       tags:
-      - Article
+        - Article
     get:
       consumes:
-      - application/json
+        - application/json
       description: One All Article example
       produces:
-      - application/json
+        - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.OneArticleResponse'
+            $ref: "#/definitions/models.OneArticleResponse"
         "406":
           description: Not Acceptable
           schema:
-            $ref: '#/definitions/forms.ArticleResponse'
+            $ref: "#/definitions/forms.ArticleResponse"
       summary: Get One Article example
       tags:
-      - Article
+        - Article
     put:
       consumes:
-      - application/json
+        - application/json
       description: Update Article example
       parameters:
-      - description: Article
-        in: body
-        name: article
-        required: true
-        schema:
-          $ref: '#/definitions/forms.CreateArticleForm'
+        - description: Article
+          in: body
+          name: article
+          required: true
+          schema:
+            $ref: "#/definitions/forms.CreateArticleForm"
       produces:
-      - application/json
+        - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.ArticleResponse'
+            $ref: "#/definitions/models.ArticleResponse"
         "406":
           description: Not Acceptable
           schema:
-            $ref: '#/definitions/forms.ArticleResponse'
+            $ref: "#/definitions/forms.ArticleResponse"
       summary: Update Article example
       tags:
-      - Article
+        - Article
   /articles:
     get:
       consumes:
-      - application/json
+        - application/json
       description: Get All Articles example
       produces:
-      - application/json
+        - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.AllArticleResponse'
+            $ref: "#/definitions/models.AllArticleResponse"
         "406":
           description: Not Acceptable
           schema:
-            $ref: '#/definitions/forms.ArticleResponse'
+            $ref: "#/definitions/forms.ArticleResponse"
       summary: Get All Articles example
       tags:
-      - Article
+        - Article
   /token/refresh:
     post:
       consumes:
-      - application/json
+        - application/json
       description: Refresh Token example
       parameters:
-      - description: Auth
-        in: body
-        name: auth
-        required: true
-        schema:
-          $ref: '#/definitions/forms.Token'
+        - description: Auth
+          in: body
+          name: auth
+          required: true
+          schema:
+            $ref: "#/definitions/forms.Token"
       produces:
-      - application/json
+        - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.AuthResponse'
+            $ref: "#/definitions/models.AuthResponse"
         "406":
           description: Not Acceptable
           schema:
-            $ref: '#/definitions/models.MessageResponse'
+            $ref: "#/definitions/models.MessageResponse"
       summary: Refresh Token example
       tags:
-      - Auth
+        - Auth
   /user/login:
     post:
       consumes:
-      - application/json
+        - application/json
       description: Login User example
       parameters:
-      - description: User
-        in: body
-        name: article
-        required: true
-        schema:
-          $ref: '#/definitions/forms.LoginForm'
+        - description: User
+          in: body
+          name: article
+          required: true
+          schema:
+            $ref: "#/definitions/forms.LoginForm"
       produces:
-      - application/json
+        - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.UserLoginResponse'
+            $ref: "#/definitions/models.UserLoginResponse"
         "406":
           description: Not Acceptable
           schema:
-            $ref: '#/definitions/models.MessageResponse'
+            $ref: "#/definitions/models.MessageResponse"
       summary: Login User example
       tags:
-      - User
+        - User
   /user/logout:
     get:
       consumes:
-      - application/json
+        - application/json
       description: Logout User example
       produces:
-      - application/json
+        - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.MessageResponse'
+            $ref: "#/definitions/models.MessageResponse"
         "406":
           description: Not Acceptable
           schema:
-            $ref: '#/definitions/models.MessageResponse'
+            $ref: "#/definitions/models.MessageResponse"
       summary: Logout User example
       tags:
-      - User
+        - User
   /user/register:
     post:
       consumes:
-      - application/json
+        - application/json
       description: Register User example
       parameters:
-      - description: User
-        in: body
-        name: article
-        required: true
-        schema:
-          $ref: '#/definitions/forms.RegisterForm'
+        - description: User
+          in: body
+          name: article
+          required: true
+          schema:
+            $ref: "#/definitions/forms.RegisterForm"
       produces:
-      - application/json
+        - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.UserLoginResponse'
+            $ref: "#/definitions/models.UserLoginResponse"
         "406":
           description: Not Acceptable
           schema:
-            $ref: '#/definitions/models.MessageResponse'
+            $ref: "#/definitions/models.MessageResponse"
       summary: Register User example
       tags:
-      - User
+        - User
 securityDefinitions:
   BearerAuth:
     in: header

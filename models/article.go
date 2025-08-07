@@ -3,8 +3,8 @@ package models
 import (
 	"errors"
 
-	"github.com/Massad/gin-boilerplate/db"
-	"github.com/Massad/gin-boilerplate/forms"
+	"github.com/irfanonk/go-server/db"
+	"github.com/irfanonk/go-server/forms"
 )
 
 // Response represents the top-level structure
